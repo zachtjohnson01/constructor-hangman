@@ -42,12 +42,9 @@ var guess_letter = function() {
             if (question_count > 9) {
                 chosen_word.guesser(answers.letter)
                 chosen_word.wins();
-                // guess_letter();
             } else {
-                // chosen_word.wins();
                 chosen_word.guesser(answers.letter)
                 chosen_word.wins();
-                // guess_letter();
             };
             var a = answer.split('');
             if (a.includes(answers.letter.toUpperCase())) {

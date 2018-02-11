@@ -2,12 +2,10 @@ var inquirer = require('inquirer');
 
 var Letter = require('./Letter.js');
 
-
-
 var array_word = [];
 
-
 module.exports = Word;
+
 function Word(word) {
     // array of new Letter objects representing the letters of the underlying word
     this.word = function() {
@@ -31,15 +29,8 @@ function Word(word) {
 
     // function that takes a character as an argument and calls the guess function on each letter object (second function in Letter.js)
     this.guesser = function(guessedcharacter) {
-        // console.log('----GUESSER----');
-        // console.log(guessedcharacter);
-        // console.log(array_word);
-        // console.log('----CORRECT LOOP----');
         array_word.forEach((element,i) => {
             element.correct(guessedcharacter)
-            // if (element.character === guessedcharacter.toUpperCase()) {
-            //     console.log('CORRECT!!!');
-            // }
         })
         this.displayedword();
     };
@@ -60,8 +51,6 @@ function Word(word) {
         if (correct === chars && chars !== 0) {
             this.gameover = true;
         };
-        // console.log(`Chars: ${chars}`);
-        // console.log(`Correct: ${correct}`);
     };
 }
 

@@ -21,8 +21,7 @@ function Letter(character) {
     };
     // function that takes a character as an agrument and checks it against the underlying character, updating the stored boolean value to true if it was guessed correctly
     this.correct = function(guessedcharacter) {
-        // console.log(this.character);
-        // console.log(guessedcharacter);
+
         if (this.character === guessedcharacter.toUpperCase()) {
             this.guessed = true;
             this.show()
