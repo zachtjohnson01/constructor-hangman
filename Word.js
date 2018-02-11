@@ -14,7 +14,6 @@ function Word(word) {
             var a = new Letter(element);
             array_word.push(a);
         })
-        console.log(word);
     };
     // function that returns a string representing the word. This should call the function on each letter object that displays the character or an underscore and concatenate those together (first function in Letter.js)
     this.displayedword = function() {
