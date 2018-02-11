@@ -22,7 +22,7 @@ function Word(word) {
         var b = array_word.forEach((element,i) => {
             c.push(element.show());
         });
-        console.log(c.join(' '));
+        console.log('\n' + c.join(' ')+'\n');
         
     };
 
@@ -49,6 +49,7 @@ function Word(word) {
         });
         if (correct === chars && chars !== 0) {
             this.gameover = true;
+            array_word = [];
         };
     };
 }

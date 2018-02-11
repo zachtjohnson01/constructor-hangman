@@ -17,12 +17,18 @@ var game = ["PAWNEE",
             "EAGLETON",
             "ANN PERKINS",
             "DONNA MEAGLE"];
-var choice = (Math.floor(Math.random() * game.length));
-var answer = game[choice];
-var chosen_word = new Word(answer);
 
-var question_count = 10;
+var question_count;
+var choice;
+var answer;
+var chosen_word;
 
+var set_game = function() {
+    question_count = 10;
+    choice = (Math.floor(Math.random() * game.length));
+    answer = game[choice];
+    chosen_word = new Word(answer);                
+}
 
 var display_word = function() {
     chosen_word.word();
@@ -31,7 +37,11 @@ var display_word = function() {
 
 var guess_letter = function() {
     if (chosen_word.gameover === true) {
-        console.log('YOU WIN!!!');
+        console.log('You got it right! Next word!\n');
+        chosen_word = {};
+        set_game();
+        display_word();
+        guess_letter();
     } else if (question_count >= 1) {
         inquirer.prompt([
             {
@@ -48,14 +58,14 @@ var guess_letter = function() {
             };
             var a = answer.split('');
             if (a.includes(answers.letter.toUpperCase())) {
-                console.log('CORRECT!!!');
+                console.log('\x1b[32m%s\x1b[0m','CORRECT!!!\n');
             } else {
-                console.log('INCORRECT!!!');
+                console.log('\x1b[31m%s\x1b[0m','INCORRECT!!!\n');
                 question_count --;
                 if (question_count === 1) {
-                    console.log(`${question_count} guess remaining!!!`)
+                    console.log(`${question_count} guess remaining!!!\n`)
                 } else {
-                    console.log(`${question_count} guesses remaining!!!`)
+                    console.log(`${question_count} guesses remaining!!!\n`)
                 }
             };
             guess_letter();
@@ -63,5 +73,6 @@ var guess_letter = function() {
     }
 }
 
+set_game();
 display_word();
 guess_letter();
