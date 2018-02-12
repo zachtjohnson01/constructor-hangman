@@ -2,6 +2,8 @@ var inquirer = require('inquirer');
 
 var Word = require('./Word.js');
 
+var figlet = require('figlet');
+
 var game = ["PAWNEE",
             "LESLIE KNOPE",
             "RON SWANSON",
@@ -23,12 +25,30 @@ var choice;
 var answer;
 var chosen_word;
 
+
+var intro = function() {
+    figlet('Hangman - Parks and Rec', function(err, data) {
+        if (err) {
+            console.log('Something went wrong...');
+            console.dir(err);
+            return;
+        };
+        console.log(data);
+        set_game();
+        display_word();
+        guess_letter();
+
+    });
+
+};
+
 var set_game = function() {
     question_count = 10;
     choice = (Math.floor(Math.random() * game.length));
     answer = game[choice];
-    chosen_word = new Word(answer);                
+    chosen_word = new Word(answer);
 }
+
 
 var display_word = function() {
     chosen_word.word();
@@ -73,6 +93,4 @@ var guess_letter = function() {
     }
 }
 
-set_game();
-display_word();
-guess_letter();
+intro();
